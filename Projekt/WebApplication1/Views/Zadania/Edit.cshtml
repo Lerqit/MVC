@@ -1,0 +1,29 @@
+﻿@model ZadaniaDomowe.Models.Zadanie
+
+@{
+    ViewData["Title"] = "Edytuj zadanie";
+}
+
+<h2>Edytuj zadanie</h2>
+
+<form method="post" action="/Zadania/Edit/@Model.Id">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div>
+        <label>Opis zadania:</label><br />
+        <input type="text" name="Opis" value="@Model.Opis" required style="width: 300px;" />
+    </div>
+    <br />
+    <div>
+        <label>Termin wykonania:</label><br />
+        <input type="date" name="Termin" value="@Model.Termin.ToString("yyyy-MM-dd")" required />
+    </div>
+    <br />
+    <div>
+        <input type="checkbox" name="Wykonane" value="true" @(Model.Wykonane ? "checked" : "") />
+        <label>Wykonane</label>
+    </div>
+    <br />
+    <button type="submit">Zapisz zmiany</button>
+    <a href="/Zadania">Anuluj</a>
+</form>

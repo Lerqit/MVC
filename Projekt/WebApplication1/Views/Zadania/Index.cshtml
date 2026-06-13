@@ -1,0 +1,31 @@
+﻿@model List<ZadaniaDomowe.Models.Zadanie>
+
+@{
+    ViewData["Title"] = "Lista zadań domowych";
+}
+
+<h2>Lista zadań domowych</h2>
+
+<a href="/Zadania/Create">Dodaj nowe zadanie</a>
+
+<table border="1" cellpadding="8" style="margin-top: 20px;">
+    <tr>
+        <th>Opis</th>
+        <th>Termin</th>
+        <th>Status</th>
+        <th>Akcje</th>
+    </tr>
+
+    @foreach (var zadanie in Model)
+    {
+        <tr>
+            <td>@zadanie.Opis</td>
+            <td>@zadanie.Termin.ToString("dd.MM.yyyy")</td>
+            <td>@(zadanie.Wykonane ? "✅ Wykonane" : "❌ Do zrobienia")</td>
+            <td>
+                <a href="/Zadania/Edit/@zadanie.Id">Edytuj</a> |
+                <a href="/Zadania/Delete/@zadanie.Id" onclick="return confirm('Na pewno usunąć?')">Usuń</a>
+            </td>
+        </tr>
+    }
+</table>

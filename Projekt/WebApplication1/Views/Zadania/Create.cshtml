@@ -1,0 +1,27 @@
+﻿@model ZadaniaDomowe.Models.Zadanie
+
+@{
+    ViewData["Title"] = "Nowe zadanie";
+}
+
+<h2>Dodaj nowe zadanie</h2>
+
+<form method="post" action="/Zadania/Create">
+    <div>
+        <label>Opis zadania:</label><br />
+        <input type="text" name="Opis" required style="width: 300px;" />
+    </div>
+    <br />
+    <div>
+        <label>Termin wykonania:</label><br />
+        <input type="date" name="Termin" required />
+    </div>
+    <br />
+    <div>
+        <input type="checkbox" name="Wykonane" value="true" />
+        <label>Już wykonane</label>
+    </div>
+    <br />
+    <button type="submit">Zapisz</button>
+    <a href="/Zadania">Anuluj</a>
+</form>
